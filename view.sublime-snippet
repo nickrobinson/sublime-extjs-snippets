@@ -1,0 +1,23 @@
+<snippet>
+    <content><![CDATA[
+<?php
+class ${1:ModelName}View implements jsonSerializable
+{
+  var ${2:VariableOne};
+  var ${3:VariableTwo};
+  
+  function jsonSerialize()
+  {
+    return [
+    'number' => $this->${2:VariableOne},
+    'type' => $this->${3:VariableTwo}
+    ];
+  }
+}
+?>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>view</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

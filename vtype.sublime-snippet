@@ -1,0 +1,23 @@
+<snippet>
+    <content><![CDATA[
+Ext.apply( Ext.form.field.VTypes, {
+    ${1:vtypeName}: function(val, field) {
+        // Boolean
+        var isValid = this.${1:vtypeName}_regExp.test( val );
+        if ( ( isValid ) && ( val.length > 0 ) )
+        {
+          // if non-blank, must be less than 50 characters in length
+          isValid = (  val.length < 51 );
+        }
+        return isValid;
+    },
+    ${1:vtypeName}_regExp: /^[0-9XNM$()\x5B\x2C\x2D\x5D]*$/,
+    ${1:vtypeName}Text: langDataallpages.${1:vtypeName}ValidationError,
+    ${1:vtypeName}Mask: /[0-9XNM$()\x5B\x2C\x2D\x5D]/g
+} );
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>vtype</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>

@@ -1,0 +1,50 @@
+<snippet>
+    <content><![CDATA[
+Ext.define('LocalAdmin.store.${1:StoreName}', {
+    extend: 'ADTRAN.store.RefreshBaseStore',
+    requires: [
+        'ADTRAN.model.ValueDisplayModel',
+        'Ext.data.reader.Xml'
+    ],
+    mixins: {
+        exportable: 'ADTRAN.store.AmbassadorExportable'
+    },
+    model: 'LocalAdmin.model.${2:ModelName}',
+    autoLoad: true,
+
+    proxy: {
+        readArgs: {
+            obj: '${3:ObjectName}',
+            act: 'get',
+            params: {}
+        },
+        createArgs: {
+            obj: '${3:ObjectName}',
+            act: 'create'
+        },
+        updateArgs: {
+            obj: '${3:ObjectName}',
+            act: 'update'
+        },
+        destroyArgs: {
+            obj: '${3:ObjectName}',
+            act: 'remove'
+        },
+        type: 'ambassador',
+        url: '../Rest/GetResponse.php',
+        reader: {
+            type: 'json',
+            root: 'cmdResponses[0].data',
+            successProperty: 'success'
+        },
+        actionMethods: {
+            read: 'GET'
+        }
+    }
+});
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>store</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
+</snippet>
